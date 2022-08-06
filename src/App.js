@@ -1,15 +1,12 @@
 import React from "react";
-import Nav from "./components/Nav";
-import Upload from "./components/upload/Upload";
 import ImagesList from "./components/imagesList/ImagesList";
+import { Container } from "@mui/material";
 
 function App() {
   return (
-    <div>
-      <Nav />
-      <Upload />
+    <Container maxWidth="lg" sx={{textAlign:'center', mt: '3rem'}}>
       <ImagesList />
-    </div>
+    </Container>
   );
 }
 
