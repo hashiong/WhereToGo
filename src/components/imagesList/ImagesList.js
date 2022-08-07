@@ -1,6 +1,7 @@
 import * as React from 'react';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
+import { Link } from '@mui/material';
 
 
 function srcset(image, size, rows = 1, cols = 1) {
@@ -32,11 +33,13 @@ export default function ImagesList() {
           '&:hover': {opacity:1}
         }}
         >
+          <Link href = {item.link}>
           <img
-            {...srcset(item.img, 200, pattern[index - Math.floor(index/pattern.length) * pattern.length].rows, pattern[index - Math.floor(index/pattern.length) * pattern.length].cols)}
+            {...srcset(item.img, 300, pattern[index - Math.floor(index/pattern.length) * pattern.length].rows, pattern[index - Math.floor(index/pattern.length) * pattern.length].cols)}
             alt={item.title}
             loading="lazy"
           />
+          </Link>
         </ImageListItem>
       ))}
     </ImageList>
@@ -49,10 +52,12 @@ const itemData = [
   {
     img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
     title: 'Breakfast',
+    redirect: '#'
   },
   {
     img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
     title: 'Burger',
+    redirect: '#'
   },
   {
     img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
