@@ -100,6 +100,10 @@ const itemData = [
     img: 'https://images.unsplash.com/photo-1589118949245-7d38baf380d6',
     title: 'Bike',
   },
+  {img: "https://www.visitdenmark.com/sites/visitdenmark.com/files/styles/tile_big/public/2019-03/Nyhavn%20K%C3%B8benhavn_43397.jpg?h=266c594a&itok=-iDx-KS3",
+    titile: 'place'
+  },
+  {img: "https://upload.wikimedia.org/wikipedia/commons/3/32/20190616154621%21Echo_Park_Lake_with_Downtown_Los_Angeles_Skyline.jpg"}
 ];
 
 const pattern = [
