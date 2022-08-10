@@ -1,0 +1,11 @@
+8/9/2022
+Encountered a bug. Unable to make a request to the kayak API form localhost, and thus unable to test the integration of the 
+ImageList page with the GetFlightInfo Feature. 
+Will try to run on a server to test the integration.
+
+MAIN ISSUE!
+
+I did not have a clear understanding of front and back end. 
+I PUT EVERYTHING into frontend
+Need to fix!
+video for help: https://www.youtube.com/watch?v=w3vs4a03y3I
