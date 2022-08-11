@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useEffect, useState } from "react"
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import { Link } from '@mui/material';
@@ -12,6 +13,7 @@ import axios from 'axios';
 // let date = d.getFullYear().toString() + month.toString() + day.toString()
 
 
+
 function srcset(image, size, rows = 1, cols = 1) {
   return {
     src: `${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format`,
@@ -21,10 +23,19 @@ function srcset(image, size, rows = 1, cols = 1) {
   };
 }
 
-export default async function ImagesList() {
-  const response = await axios.get('http://localhost:3001/api/getinfo')
-  console.log("itemdata: " + response)
-  const itemData = response
+export default function ImagesList() {
+  const [itemData, setItemData] = useState([])
+  const getData = async () =>{
+    axios.get('http://localhost:3001/api/getinfo').then((response) => {
+      setItemData(response.data)
+    })
+  }
+  
+  useEffect(() => {
+    getData()},[]
+  );
+  
+  
   
   return (
       <ImageList
