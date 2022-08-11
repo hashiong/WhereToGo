@@ -9,3 +9,10 @@ I did not have a clear understanding of front and back end.
 I PUT EVERYTHING into frontend
 Need to fix!
 video for help: https://www.youtube.com/watch?v=w3vs4a03y3I
+
+8/10/2022
+The Cross-origin resource sharing problem is solved by properly seperating the project into frontend and backend
+New issue: I can't directly receive the data from the API and then update the page
+I need to implement useState and useEffect to solve this
+Helpful resources: https://stackoverflow.com/questions/69987724/reactjs-error-objects-are-not-valid-as-a-react-child-found-object-promise
+https://reactjs.org/docs/hooks-intro.html
