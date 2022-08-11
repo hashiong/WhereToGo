@@ -16,3 +16,5 @@ New issue: I can't directly receive the data from the API and then update the pa
 I need to implement useState and useEffect to solve this
 Helpful resources: https://stackoverflow.com/questions/69987724/reactjs-error-objects-are-not-valid-as-a-react-child-found-object-promise
 https://reactjs.org/docs/hooks-intro.html
+
+8/11/2022
