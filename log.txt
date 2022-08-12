@@ -18,3 +18,6 @@ Helpful resources: https://stackoverflow.com/questions/69987724/reactjs-error-ob
 https://reactjs.org/docs/hooks-intro.html
 
 8/11/2022
+Added useEffect and useState to frontend to resolve the issue above. 
+All the basic functions are implemented to the web app.
+Known bug: web app is not working properly when it needs to update the fight info.

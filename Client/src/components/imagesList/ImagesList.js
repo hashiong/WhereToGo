@@ -2,7 +2,6 @@ import * as React from 'react';
 import { useEffect, useState } from "react"
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
-import { Link } from '@mui/material';
 import axios from 'axios';
 
 // let d = new Date()
@@ -14,17 +13,23 @@ import axios from 'axios';
 
 
 
-function srcset(image, size, rows = 1, cols = 1) {
-  return {
-    src: `${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format`,
-    srcSet: `${image}?w=${size * cols}&h=${
-      size * rows
-    }&fit=crop&auto=format&dpr=2 2x`,
-  };
-}
+// function srcset(image, size, rows = 1, cols = 1) {
+//   return {
+//     src: `${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format`,
+//     srcSet: `${image}?w=${size * cols}&h=${
+//       size * rows
+//     }&fit=crop&auto=format&dpr=2 2x`,
+//   };
+// }
+
 
 export default function ImagesList() {
   const [itemData, setItemData] = useState([])
+  const updateData = async () =>{
+    axios.get('http://localhost:3001/api/updateinfo').then((response) => {
+      console.log(response.data)
+    })
+  }
   const getData = async () =>{
     axios.get('http://localhost:3001/api/getinfo').then((response) => {
       setItemData(response.data)
@@ -32,36 +37,39 @@ export default function ImagesList() {
   }
   
   useEffect(() => {
-    getData()},[]
+    updateData().then((res) => getData())
+    return () => {
+      console.log("Data Retrieved")
+    }},[]
   );
   
   
   
   return (
-      <ImageList
+    <ImageList sx={{ width: '100%', height: '100%' }}>
+      {/* <ImageList
       variant="quilted"
       cols={4}
       rowHeight={'auto'}
-    >
-      {itemData.map((item, index) => (
-        <ImageListItem 
-        key={item.img} 
-        cols={pattern[index - Math.floor(index/pattern.length) * pattern.length].cols} 
-        rows={pattern[index - Math.floor(index/pattern.length) * pattern.length].rows} 
+    > */}
+      {itemData.map((item) => (
+        <ImageListItem key={item.img} 
         sx = {{
           opacity: '.8',
           transition: 'opacity .3s linear',
           cursor: 'pointer',
           '&:hover': {opacity:1}
         }}
-        >
-          <Link href = {item.url}>
+        onClick = {() => window.location.href = item.url}>
+          
+          {/* <Link href = {item.url}> */}
           <img
-            {...srcset(item.img, 300, pattern[index - Math.floor(index/pattern.length) * pattern.length].rows, pattern[index - Math.floor(index/pattern.length) * pattern.length].cols)}
-            alt={item.city + ", " + item.country}
+            src={`${item.img}?w=248&fit=crop&auto=format`}
+            srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+            alt={item.city}
             loading="lazy"
           />
-          </Link>
+          {/* </Link> */}
         </ImageListItem>
       ))}
     </ImageList>
@@ -131,38 +139,3 @@ export default function ImagesList() {
 //   },
 //   {img: "https://upload.wikimedia.org/wikipedia/commons/3/32/20190616154621%21Echo_Park_Lake_with_Downtown_Los_Angeles_Skyline.jpg"}
 // ];
-
-const pattern = [
-  {
-    rows: 2,
-    cols: 2
-  },
-  {
-    rows: 1,
-    cols: 1
-  },
-  {
-    rows: 1,
-    cols: 1
-  },
-  {
-    rows: 1,
-    cols: 2
-  },
-  {
-    rows: 1,
-    cols: 2
-  },
-  {
-    rows: 2,
-    cols: 2
-  },
-  {
-    rows: 1,
-    cols: 1
-  },
-  {
-    rows: 1,
-    cols: 1
-  },
-]
